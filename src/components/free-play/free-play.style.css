@@ -1,0 +1,35 @@
+.imagesDiv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.imgDiv {
+  background-color: green;
+  display: inline-block;
+  height: auto;
+  width: 200px;
+  margin: 3px;
+}
+.imgDivTrans {
+  background-color: white;
+  display: inline-block;
+  height: auto;
+  width: 200px;
+  margin: 3px;
+  transform: rotateY(180deg);
+}
+.transition {
+  transition: background-color 1s, transform 1s;
+}
+.tileImage {
+  width: 200px;
+  height: 180px;
+}
+.hidden {
+  visibility: hidden;
+}
+.showing {
+  visibility: visible;
+}
+.match {
+  visibility: visible;
+}
