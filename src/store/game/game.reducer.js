@@ -7,7 +7,8 @@ const INITIAL_STATE = {
   showingArray: [],
   idOfSelected: "",
   imagesState: [],
-  matchedImages: [1, 2, 3],
+  matchedImages: [],
+  star: 0,
 };
 
 export const gameReducer = (state = INITIAL_STATE, action) => {
@@ -21,6 +22,9 @@ export const gameReducer = (state = INITIAL_STATE, action) => {
       return { ...state, imagesState: payload };
     case GAME_ACTION_TYPES.ID_OF_SELECTED:
       return { ...state, idOfSelected: payload };
+    case GAME_ACTION_TYPES.LEVEL_STAR:
+      return { ...state, star: payload };
+
     case GAME_ACTION_TYPES.MATCHED_IMAGES:
       return { ...state, matchedImages: [...state.matchedImages, payload] };
 

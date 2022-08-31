@@ -6,8 +6,8 @@ import {
   signInWithRedirect,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signOut, 
-  signInWithEmailAndPassword
+  signOut,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
@@ -47,15 +47,16 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const db = getFirestore();
 
-export const createUserDocument = async (userAuth, additionalInformation) => {
+export const createUserDocument = async (
+  userAuth,
+  levels,
+  additionalInformation
+) => {
   if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
 
-
-
   const userSnapshot = await getDoc(userDocRef);
 
- 
   //if snapshot exist
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -65,10 +66,11 @@ export const createUserDocument = async (userAuth, additionalInformation) => {
         displayName,
         email,
         createdAt,
+        levels,
         ...additionalInformation,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
   //if snapshot exist
@@ -76,13 +78,13 @@ export const createUserDocument = async (userAuth, additionalInformation) => {
 };
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
-export const signOutUser =async()=>await signOut(auth)
+export const signOutUser = async () => await signOut(auth);
 
-export const updateName = async () => {
-  const userDocRef = doc(db, "users", "uIsy5e6jzNW1CmzpODey8X9TiTc2");
+export const updateLevelData = async (uid, level, playerStar, moves) => {
+  const userDocRef = doc(db, "users", uid);
   const data = {
     levels: {
-      1: { star: 2 },
+      [level]: { star: playerStar, playerMoves: moves },
     },
   };
   try {
@@ -91,14 +93,27 @@ export const updateName = async () => {
     console.log(error);
   }
 };
-export const getData = async () => {
-  const userDocRef = doc(db, "users", "uIsy5e6jzNW1CmzpODey8X9TiTc2");
+export const unlockLevel = async (uid, level) => {
+  const userDocRef = doc(db, "users", uid);
+  const data = {
+    levels: {
+      [level]: { unlocked: true },
+    },
+  };
+  try {
+    await setDoc(userDocRef, data, { merge: true });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getData = async (uid) => {
+  const userDocRef = doc(db, "users", uid);
 
   try {
     const docSnap = await getDoc(userDocRef);
 
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      return docSnap.data();
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");

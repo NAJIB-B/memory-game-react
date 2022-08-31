@@ -10,20 +10,25 @@ import {
   onAuthStateChangedListener,
   createUserDocument,
 } from "./utils/firebase/firebase.utils";
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUser, setUid } from "./store/user/user.action";
+
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+
 import "./App.css";
 import PrivateRoute from "./private-routes/privateRoute";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const unsubcribe = onAuthStateChangedListener((user) => {
       if (user) {
         createUserDocument(user);
       }
       dispatch(setCurrentUser(user));
+      if (!user) return;
+      dispatch(setUid(user.uid));
     });
     return unsubcribe;
   }, []);

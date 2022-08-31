@@ -22,9 +22,10 @@ export const setIdOfSelected = (value) => {
 export const changeGameState = (state) => {
   return createAction(GAME_ACTION_TYPES.GAME_STATE, state);
 };
-export const setCurrentImg = (value) => {
-  return createAction(GAME_ACTION_TYPES.SET_CURRENT_IMAGE, value);
+export const setLevelStar = (value) => {
+  return createAction(GAME_ACTION_TYPES.LEVEL_STAR, value);
 };
+
 export const resetShowingArray = (value) => {
   return createAction(GAME_ACTION_TYPES.RESET_SHOWING_ARRAY, value);
 };

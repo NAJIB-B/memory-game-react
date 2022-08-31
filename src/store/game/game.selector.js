@@ -6,3 +6,5 @@ export const selectUnshuffledImages = (state) => state.game.unshuffledImages;
 export const selectImagesState = (state) => state.game.imagesState;
 export const selectIdOfSelected = (state) => state.game.idOfSelected;
 export const selectMatchedImages = (state) => state.game.matchedImages;
+export const selectLevelStar = (state) => state.game.star;
+

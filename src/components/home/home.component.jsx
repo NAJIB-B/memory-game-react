@@ -1,37 +1,70 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "../../store/user/user.selector";
-
+import {
+  Area,
+  Circles,
+  CirclesLi,
+  HomeH1,
+  GameBtn,
+  GameBtnDiv,
+  LoginBtnLink,
+  SignUpBtnLink,
+  SignUpBtn,
+  LogOutBtn,
+  TopBtnDiv,
+} from "./home.style";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 const Home = () => {
+  const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
   const logOut = async () => {
     signOutUser();
   };
+  const login = () => {
+    navigate("login");
+  };
+  const signUp = () => {
+    navigate("signUp");
+  };
+  const freePlay = () => {
+    navigate("freePlay");
+  };
+  const levels = () => {
+    navigate("levels");
+  };
   return (
     <div>
-      {currentUser ? (
-        <button onClick={logOut}>logout</button>
-      ) : (
-        <div>
-          <Link to={"login"}>
-            <button>login</button>
-          </Link>
-          <Link to={"signUp"}>
-            <button>sign up</button>
-          </Link>
-        </div>
-      )}
+      <Area>
+        <TopBtnDiv>
+          {currentUser ? (
+            <LogOutBtn onClick={logOut}>logout</LogOutBtn>
+          ) : (
+            <div>
+              <LogOutBtn onClick={login}>Log in</LogOutBtn>
 
-      <h1>memory game</h1>
+              <SignUpBtn onClick={signUp}>Sign Up</SignUpBtn>
+            </div>
+          )}
+        </TopBtnDiv>
+        <HomeH1>memory game</HomeH1>
+        <GameBtnDiv onClick={freePlay}>Free Mode</GameBtnDiv>
+        <GameBtnDiv onClick={levels}>Levels</GameBtnDiv>
 
-      <Link to={"/freePlay"}>
-        <button>free play</button>
-      </Link>
-      <Link to={"/levels"}>
-        {" "}
-        <button>levels</button>
-      </Link>
+        <Circles>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+          <CirclesLi></CirclesLi>
+        </Circles>
+      </Area>
     </div>
   );
 };

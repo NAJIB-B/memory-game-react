@@ -7,7 +7,7 @@ import { fromClosed } from "../free-play/free-play.component";
 
 const ClosedImageCard = ({ image }) => {
   const dispatch = useDispatch();
-  const state = useSelector(selectImagesState);
+  
   const gameState = useSelector(selectGameState)
   //   const showImage = (image) => {
   //     const state = useSelector(selectImagesState);

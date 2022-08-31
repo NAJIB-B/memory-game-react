@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getRedirectResult } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { levels } from "../../utils/game/levels-data";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocument,
@@ -11,12 +12,12 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 const SignUp = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const redirect = async () => {
       const response = await getRedirectResult(auth);
       if (response) {
-        const userDocRef = await createUserDocument(response.user);
+        const userDocRef = await createUserDocument(response.user, levels);
         navigate("/");
       }
     };
@@ -47,7 +48,7 @@ const SignUp = () => {
         password
       );
 
-      await createUserDocument(user, { displayName });
+      await createUserDocument(user, levels, { displayName });
 
       resetFields();
       navigate("/");

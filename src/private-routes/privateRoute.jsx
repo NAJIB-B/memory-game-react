@@ -9,7 +9,7 @@ function PrivateRoute({ children }) {
 
   if (!currentUser) {
     // not logged in so redirect to login page with the return url
-    alert("not logged in");
+   
     return <Navigate to="/login" />;
   }
 

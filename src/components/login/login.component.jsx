@@ -4,7 +4,9 @@ import { getRedirectResult } from "firebase/auth";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { levels } from "../../utils/game/levels-data";
+import { Circles, CirclesLi, Area } from "../home/home.style";
+import { LoginDiv,FormFieldLabels } from "./login.style";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocument,
@@ -18,12 +20,15 @@ const Login = () => {
     const redirect = async () => {
       const response = await getRedirectResult(auth);
       if (response) {
-        const userDocRef = await createUserDocument(response.user);
+        const userDocRef = await createUserDocument(response.user, levels);
         navigate("/");
       }
     };
     redirect();
   }, []);
+  // useEffect(() => {
+  //   if (auth) navigate("/");
+  // }, []);
   const defaultFormFields = {
     email: "",
     password: "",
@@ -65,32 +70,47 @@ const Login = () => {
     signInWithGoogleRedirect();
   };
   return (
-    <div>
-      <p>email</p>
-      <input
-        type="email"
-        label="email"
-        placeholder="email"
-        name="email"
-        onChange={handleChange}
-        value={email}
-        required
-      />
-      <p>password</p>
-      <input
-        type="password"
-        label="password"
-        placeholder="password"
-        name="password"
-        onChange={handleChange}
-        value={password}
-        required
-      />
+    <Area>
+      <LoginDiv>
+        <FormFieldLabels>email</FormFieldLabels>
+        <input
+          type="email"
+          label="email"
+          placeholder="email"
+          name="email"
+          onChange={handleChange}
+          value={email}
+          required
+        />
+        <p>password</p>
+        <input
+          type="password"
+          label="password"
+          placeholder="password"
+          name="password"
+          onChange={handleChange}
+          value={password}
+          required
+        />
 
-      <button onClick={loginUser}>login</button>
-      <p>or</p>
-      <button onClick={signInWithGoogle}>sign in with google</button>
-    </div>
+        <button onClick={loginUser}>login</button>
+        <p>or</p>
+        <button onClick={signInWithGoogle}>sign in with google</button>
+      </LoginDiv>
+
+      <Circles>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+      </Circles>
+    </Area>
   );
 };
 

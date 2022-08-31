@@ -1,20 +1,12 @@
-import "./free-play.style.css";
 import ClosedImageCard from "../closed-image-card/closed-image-card.component";
 import ImageCard from "../image-card/image-card.component";
-import cat from "../../assets/images/cat.png";
-import dog from "../../assets/images/dog.png";
-import elephant from "../../assets/images/elephant.png";
-import lion from "../../assets/images/lion.png";
-import horse from "../../assets/images/horse.png";
-import panda from "../../assets/images/panda.png";
-import rat from "../../assets/images/rat.png";
-import croc from "../../assets/images/croc.png";
 
 import { suffleImages } from "../../utils/game/game.utils";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-
+import { useParams } from "react-router-dom";
+import { updateLevelData } from "../../utils/firebase/firebase.utils";
 import {
   changeGameState,
   incrementCounter,
@@ -25,47 +17,41 @@ import {
   addItemToMatchedImages,
   setImagesState,
   setIdOfSelected,
+  setLevelStar,
   resetmatchedImages,
 } from "../../store/game/game.action";
+import { selectUid } from "../../store/user/user.selector";
+
 import {
   selectMatchedImages,
   selectCounterValue,
   selectIdOfSelected,
-  selectGameState,
-  selectCurrentImg,
   selectShowingArray,
   selectImagesState,
 } from "../../store/game/game.selector";
 
-const FreePlay = () => {
-  const unshuffledImg = [
-    { img: cat, id: "Lhe44LRTPy", showing: false },
-    { img: dog, id: "m971yAiOJs", showing: false },
-    { img: elephant, id: "wxzcrCbSgi", showing: false },
-    { img: horse, id: "nGShQE14ka", showing: false },
-    { img: lion, id: "sOPkRF9LUm", showing: false },
-    { img: panda, id: "I1I3oVEoyW", showing: false },
-    { img: croc, id: "ScBwLVxLEL", showing: false },
-    { img: rat, id: "zMbvb3jAzg", showing: false },
-    { img: cat, id: "jmFoEOuJK9", showing: false },
-    { img: dog, id: "YKsATYt7xK", showing: false },
-    { img: elephant, id: "sxhnT0Xyv6", showing: false },
-    { img: horse, id: "Eg3CpNUzTd", showing: false },
-    { img: lion, id: "fjC2mqoBdZ", showing: false },
-    { img: panda, id: "NGNs7lup73", showing: false },
-    { img: croc, id: "OtXc2HJ6Md", showing: false },
-    { img: rat, id: "zfuyoTxNNl", showing: false },
-  ];
+import { selectUserLevels } from "../../store/levels/levels.selector";
+import Modal from "../modal/modal.component";
+import { useContext } from "react";
+import { ModalContext } from "../context/modal.context";
+const Level = () => {
+  const { level } = useParams();
+  const userLevels = useSelector(selectUserLevels);
+  const { setModal, modal } = useContext(ModalContext);
+  const unshuffledImg = userLevels[level].Images;
   const [imgs, setImgs] = useState([]);
   const [showImgs, setShowImgs] = useState(false);
   const [startBtn, setStartBtn] = useState(true);
   const [instuction, setInstuction] = useState(false);
   const [showMoves, setShowMoves] = useState(false);
   const [showWinMessage, setWinMessage] = useState(false);
+  // const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
-  const state = useSelector(selectGameState);
+
+  const levelMoves = userLevels[level].levelMoves;
   const moves = useSelector(selectCounterValue);
-  const currentImg = useSelector(selectCurrentImg);
+
+  const userUid = useSelector(selectUid);
   const showingArray = useSelector(selectShowingArray);
   const matchedImages = useSelector(selectMatchedImages);
   const imagesState = useSelector(selectImagesState);
@@ -97,7 +83,7 @@ const FreePlay = () => {
 
     if (showingArray.length >= 1) {
       for (let j = 0; j < showingArray.length; j++) {
-        if (showingArray.length + 1 <= 1) return;
+        if (showingArray.length <= 1) return;
         if (showingArray[0] !== showingArray[1]) {
           const newState = imagesState.map((item) =>
             item.img === showingArray[0] ? { ...item, showing: false } : item
@@ -119,12 +105,26 @@ const FreePlay = () => {
   useEffect(() => {
     if (matchedImages.length === unshuffledImg.length * 2) {
       dispatch(changeGameState(false));
+
       setWinMessage(true);
       setShowMoves(false);
       console.log("you won");
+      const playerStar = getStar(levelMoves, moves);
+      dispatch(setLevelStar(playerStar));
+      updateLevelData(userUid, level, playerStar, moves);
+      dispatch(resetmatchedImages([]));
+      dispatch(resetShowingArray([]));
+      setModal(true);
     }
   }, [matchedImages]);
+  const getStar = (levelMoves, moves) => {
+    let star;
 
+    if (levelMoves === moves) star = 3;
+    if (moves > levelMoves && moves <= levelMoves + levelMoves * 0.5) star = 2;
+    if (moves > levelMoves && moves > levelMoves + levelMoves * 0.5) star = 1;
+    return star;
+  };
   const handleStartGame = () => {
     dispatch(changeGameState(true));
     defaultValues();
@@ -132,7 +132,7 @@ const FreePlay = () => {
     setShowImgs(!showImgs);
     setTimeout(() => {
       setShowImgs(false);
-    }, 3000);
+    }, 1000 * userLevels[level].showingTime);
     setStartBtn(false);
   };
   const handleResetGame = () => {
@@ -150,7 +150,7 @@ const FreePlay = () => {
     setShowImgs(true);
     setTimeout(() => {
       setShowImgs(false);
-    }, 3000);
+    }, 1000 * userLevels[level].showingTime);
     setStartBtn(false);
   };
   const defaultValues = () => {
@@ -205,8 +205,9 @@ const FreePlay = () => {
               );
             })}
       </div>
+      {modal ? <Modal></Modal> : ""}
     </>
   );
 };
 
-export default FreePlay;
+export default Level;
