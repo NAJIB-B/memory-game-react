@@ -1,6 +1,8 @@
 import LevelCard from "../level-card/level-card.component";
 import { useSelector } from "react-redux";
 import { selectUserLevels } from "../../store/levels/levels.selector";
+import { LevelPreviewDiv } from "./LevelsPreview.style";
+import { Circles, CirclesLi } from "../home/home.style";
 
 const LevelsPreview = () => {
   const levels = useSelector(selectUserLevels);
@@ -8,7 +10,7 @@ const LevelsPreview = () => {
   const main = Object.entries(levels);
   //   const level = Object.entries(main[0][1]);
   return (
-    <>
+    <LevelPreviewDiv>
       {main.map((item, index) => {
         const data = item[1];
 
@@ -20,7 +22,19 @@ const LevelsPreview = () => {
           ></LevelCard>
         );
       })}
-    </>
+      <Circles>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+      </Circles>
+    </LevelPreviewDiv>
   );
 };
 

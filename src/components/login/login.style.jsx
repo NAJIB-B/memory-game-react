@@ -24,12 +24,23 @@ export const LoginDiv = styled.div`
   border-radius: 20px;
   padding: 2rem;
   z-index: 10;
+
   @media (max-width: 600px) {
     top: 45%;
   }
 `;
+export const DontHaveAccout = styled.h4`
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px black;
+  & span {
+    color: #71df73;
+
+    cursor: pointer;
+  }
+`;
 export const FormFieldLabels = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: "Exo", sans-serif;
   color: white;
   text-align: left;
@@ -42,7 +53,7 @@ export const FormFieldLabels = styled.p`
   }
 `;
 export const FormInputs = styled.input`
-  height: 2.5rem;
+  height: 2.3rem;
   width: 25rem;
   outline: none;
   font-size: 1.2rem;
@@ -78,4 +89,8 @@ export const SignInwithgoogleTextDiv = styled.div`
   @media (max-width: 370px) {
     font-size: 0.8rem;
   }
+`;
+export const Or = styled.p`
+  color: white;
+  font-size: 1.2rem;
 `;

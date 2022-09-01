@@ -17,6 +17,8 @@ import {
   FormInputs,
   GoogleIcon,
   SignInwithgoogleTextDiv,
+  DontHaveAccout,
+  Or,
 } from "../login/login.style";
 import {
   createAuthUserWithEmailAndPassword,
@@ -120,7 +122,7 @@ const SignUp = () => {
         />
         <br />
         <SignUpBtn onClick={signUp}>sign up</SignUpBtn>
-        <p>or</p>
+        <Or>or</Or>
         <LogOutBtn onClick={signInWithGoogle}>
           {" "}
           <SignInwithgoogleTextDiv>
@@ -133,6 +135,9 @@ const SignUp = () => {
             </div>
           </SignInwithgoogleTextDiv>
         </LogOutBtn>
+        <DontHaveAccout>
+          Already have an account?<span>Log in</span>
+        </DontHaveAccout>
       </LoginDiv>
       <Circles>
         <CirclesLi></CirclesLi>

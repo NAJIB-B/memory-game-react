@@ -17,7 +17,7 @@ const homeAnimation = keyframes`
 
 export const Area = styled.div`
   background: rgba(152, 68, 183, 1);
-  background: -webkit-linear-gradient(to left, #8f94fb, rgba(152, 68, 183, 1));
+  /* background: -webkit-linear-gradient(to left, #8f94fb, rgba(152, 68, 183, 1)); */
   width: 100%;
   height: 100vh;
   text-align: center;
@@ -59,6 +59,7 @@ export const LogOutBtn = styled.button`
   font-size: 1.5rem;
   background: none;
 
+  cursor: pointer;
   text-shadow: 2px 2px black;
   border: 3px solid white;
   border-radius: 20px;
@@ -87,6 +88,8 @@ export const SignUpBtn = styled.button`
   font-size: 1.5rem;
   background: #33cc36;
   border: none;
+
+  cursor: pointer;
   text-shadow: 2px 2px black;
   border-radius: 20px;
   position: relative;

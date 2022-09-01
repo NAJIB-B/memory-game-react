@@ -19,6 +19,8 @@ import {
   FormInputs,
   GoogleIcon,
   SignInwithgoogleTextDiv,
+  Or,
+  DontHaveAccout,
 } from "./login.style";
 import {
   createAuthUserWithEmailAndPassword,
@@ -39,6 +41,9 @@ const Login = () => {
     };
     redirect();
   }, []);
+  const signUp = () => {
+    navigate("signUp");
+  };
   // useEffect(() => {
   //   if (auth) navigate("/");
   // }, []);
@@ -108,7 +113,7 @@ const Login = () => {
         />
         <br />
         <SignUpBtn onClick={loginUser}>login</SignUpBtn>
-        <p>or</p>
+        <Or>or</Or>
         <LogOutBtn onClick={signInWithGoogle}>
           {" "}
           <SignInwithgoogleTextDiv>
@@ -121,6 +126,9 @@ const Login = () => {
             </div>
           </SignInwithgoogleTextDiv>
         </LogOutBtn>
+        <DontHaveAccout>
+          Don't have an account?<span onClick={signUp}>Sign up</span>
+        </DontHaveAccout>
       </LoginDiv>
       <Circles>
         <CirclesLi></CirclesLi>
