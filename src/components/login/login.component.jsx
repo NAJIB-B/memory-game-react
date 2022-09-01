@@ -1,12 +1,25 @@
 import { async } from "@firebase/util";
 import { useEffect } from "react";
+import { Icon } from "@iconify/react";
 import { getRedirectResult } from "firebase/auth";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { levels } from "../../utils/game/levels-data";
-import { Circles, CirclesLi, Area } from "../home/home.style";
-import { LoginDiv,FormFieldLabels } from "./login.style";
+import {
+  Circles,
+  CirclesLi,
+  Area,
+  SignUpBtn,
+  LogOutBtn,
+} from "../home/home.style";
+import {
+  LoginDiv,
+  FormFieldLabels,
+  FormInputs,
+  GoogleIcon,
+  SignInwithgoogleTextDiv,
+} from "./login.style";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocument,
@@ -71,19 +84,20 @@ const Login = () => {
   };
   return (
     <Area>
+      {" "}
       <LoginDiv>
-        <FormFieldLabels>email</FormFieldLabels>
-        <input
+        <FormFieldLabels>Email :</FormFieldLabels>
+        <FormInputs
           type="email"
           label="email"
-          placeholder="email"
+          placeholder="Email"
           name="email"
           onChange={handleChange}
           value={email}
           required
         />
-        <p>password</p>
-        <input
+        <FormFieldLabels>password :</FormFieldLabels>
+        <FormInputs
           type="password"
           label="password"
           placeholder="password"
@@ -92,12 +106,22 @@ const Login = () => {
           value={password}
           required
         />
-
-        <button onClick={loginUser}>login</button>
+        <br />
+        <SignUpBtn onClick={loginUser}>login</SignUpBtn>
         <p>or</p>
-        <button onClick={signInWithGoogle}>sign in with google</button>
+        <LogOutBtn onClick={signInWithGoogle}>
+          {" "}
+          <SignInwithgoogleTextDiv>
+            <div>
+              <GoogleIcon icon="ant-design:google-outlined" color="white" />{" "}
+            </div>
+            <div>
+              {" "}
+              <span>sign in with google</span>
+            </div>
+          </SignInwithgoogleTextDiv>
+        </LogOutBtn>
       </LoginDiv>
-
       <Circles>
         <CirclesLi></CirclesLi>
         <CirclesLi></CirclesLi>

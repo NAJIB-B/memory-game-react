@@ -5,6 +5,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { levels } from "../../utils/game/levels-data";
 import {
+  Circles,
+  CirclesLi,
+  Area,
+  SignUpBtn,
+  LogOutBtn,
+} from "../home/home.style";
+import {
+  LoginDiv,
+  FormFieldLabels,
+  FormInputs,
+  GoogleIcon,
+  SignInwithgoogleTextDiv,
+} from "../login/login.style";
+import {
   createAuthUserWithEmailAndPassword,
   createUserDocument,
   auth,
@@ -62,51 +76,77 @@ const SignUp = () => {
     signInWithGoogleRedirect();
   };
   return (
-    <div>
-      <p>name</p>
-      <input
-        type="text"
-        label="name"
-        placeholder="name"
-        name="displayName"
-        onChange={handleChange}
-        value={displayName}
-        required
-      />
-      <p>email</p>
-      <input
-        type="email"
-        label="email"
-        placeholder="email"
-        name="email"
-        onChange={handleChange}
-        value={email}
-        required
-      />
-      <p>password</p>
-      <input
-        type="password"
-        label="password"
-        placeholder="password"
-        name="password"
-        onChange={handleChange}
-        value={password}
-        required
-      />
-      <p>confirm password</p>
-      <input
-        type="password"
-        label="confirm password"
-        placeholder="confirm password"
-        name="confirmPassword"
-        onChange={handleChange}
-        value={confirmPassword}
-        required
-      />
-      <button onClick={signUp}>sign up</button>
-      <p>or</p>
-      <button onClick={signInWithGoogle}>sign in with google</button>
-    </div>
+    <Area>
+      <LoginDiv>
+        <FormFieldLabels>Name :</FormFieldLabels>
+        <FormInputs
+          type="text"
+          label="name"
+          placeholder="name"
+          name="displayName"
+          onChange={handleChange}
+          value={displayName}
+          required
+        />
+        <FormFieldLabels>Email :</FormFieldLabels>
+        <FormInputs
+          type="email"
+          label="email"
+          placeholder="email"
+          name="email"
+          onChange={handleChange}
+          value={email}
+          required
+        />
+        <FormFieldLabels>Password :</FormFieldLabels>
+        <FormInputs
+          type="password"
+          label="password"
+          placeholder="password"
+          name="password"
+          onChange={handleChange}
+          value={password}
+          required
+        />
+        <FormFieldLabels>Confirm password :</FormFieldLabels>
+        <FormInputs
+          type="password"
+          label="confirm password"
+          placeholder="confirm password"
+          name="confirmPassword"
+          onChange={handleChange}
+          value={confirmPassword}
+          required
+        />
+        <br />
+        <SignUpBtn onClick={signUp}>sign up</SignUpBtn>
+        <p>or</p>
+        <LogOutBtn onClick={signInWithGoogle}>
+          {" "}
+          <SignInwithgoogleTextDiv>
+            <div>
+              <GoogleIcon icon="ant-design:google-outlined" color="white" />{" "}
+            </div>
+            <div>
+              {" "}
+              <span>sign in with google</span>
+            </div>
+          </SignInwithgoogleTextDiv>
+        </LogOutBtn>
+      </LoginDiv>
+      <Circles>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+        <CirclesLi></CirclesLi>
+      </Circles>
+    </Area>
   );
 };
 

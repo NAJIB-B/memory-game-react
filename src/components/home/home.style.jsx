@@ -70,6 +70,9 @@ export const LogOutBtn = styled.button`
   @media (max-width: 460px) {
     padding: 0.5rem 1rem;
   }
+  @media (max-width: 370px) {
+    font-size: 0.8rem;
+  }
   @media (max-width: 350px) {
     margin: 0.5rem 0.2rem;
     border: 2px solid white;
