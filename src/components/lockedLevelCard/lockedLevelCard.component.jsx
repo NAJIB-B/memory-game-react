@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
+import { LevelName, Stars } from "../unlockedLevelCard/unlockedLevelCard.style";
+import { LockedLevelButton, Lock } from "./lockedLevelCard.style";
 
 const LockedLevel = (props) => {
   const { levelName } = props;
 
   return (
-    <div>
-      <p>
-        {levelName} <span>locked </span>
-      </p>
-      <p> 0 star</p>
-    </div>
+    <LockedLevelButton>
+      <LevelName>Level {levelName}</LevelName>
+      <span>
+        <Stars icon="ant-design:star-filled" color="gray" />
+        <Stars icon="ant-design:star-filled" color="gray" />
+        <Stars icon="ant-design:star-filled" color="gray" />
+      </span>
+      <Lock icon="ant-design:lock-twotone" color="black" />
+    </LockedLevelButton>
   );
 };
 
