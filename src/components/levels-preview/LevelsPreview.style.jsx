@@ -5,7 +5,7 @@ export const LevelPreviewDiv = styled.div`
   background-color: rgba(152, 68, 183, 1);
 
   height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 160px;
