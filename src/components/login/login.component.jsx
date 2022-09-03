@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { getRedirectResult } from "firebase/auth";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { levels } from "../../utils/game/levels-data";
 import {
@@ -43,7 +44,7 @@ const Login = () => {
     redirect();
   }, []);
   const signUp = () => {
-    navigate("signUp");
+    navigate("/signUp", { replace: true });
   };
   // useEffect(() => {
   //   if (auth) navigate("/");
@@ -85,8 +86,12 @@ const Login = () => {
       //   alert("incorrect password");
     }
   };
-  const signInWithGoogle = () => {
-    signInWithGooglePopup();
+  const signInWithGoogle = async () => {
+    const response = await signInWithGooglePopup();
+    if (response) {
+      const userDocRef = await createUserDocument(response.user, levels);
+      navigate("/");
+    }
   };
   return (
     <Area>

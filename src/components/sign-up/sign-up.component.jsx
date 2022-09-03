@@ -54,6 +54,9 @@ const SignUp = () => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
+  const login = () => {
+    navigate("/login", { replace: true });
+  };
   const signUp = async () => {
     if (password !== confirmPassword) {
       alert("password do not match");
@@ -75,8 +78,12 @@ const SignUp = () => {
       } else console.log(`failed ${error}`);
     }
   };
-  const signInWithGoogle = () => {
-    signInWithGooglePopup();
+  const signInWithGoogle = async () => {
+    const response = await signInWithGooglePopup();
+    if (response) {
+      const userDocRef = await createUserDocument(response.user, levels);
+      navigate("/");
+    }
   };
   return (
     <Area>
@@ -137,7 +144,7 @@ const SignUp = () => {
           </SignInwithgoogleTextDiv>
         </LogOutBtn>
         <DontHaveAccout>
-          Already have an account?<span>Log in</span>
+          Already have an account?<span onClick={login}>Log in</span>
         </DontHaveAccout>
       </LoginDiv>
       <Circles>

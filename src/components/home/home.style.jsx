@@ -28,6 +28,7 @@ export const HomeH1 = styled.h1`
   font-size: 6rem;
   text-align: center;
   color: #33cc36;
+
   text-shadow: 4px 4px black;
   @media (max-width: 710px) {
     font-size: 5rem;

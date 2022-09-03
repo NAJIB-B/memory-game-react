@@ -26,7 +26,7 @@ export const LoginDiv = styled.div`
   z-index: 10;
 
   @media (max-width: 600px) {
-    top: 45%;
+    top: 50%;
   }
 `;
 export const DontHaveAccout = styled.h4`
