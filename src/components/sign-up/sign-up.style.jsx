@@ -1,6 +1,21 @@
 import styled from "styled-components";
 
-
 export const SignUpPageDiv = styled.div`
-    opacity:0.9;
-`
+  background-color: rgba(152, 68, 183, 1);
+
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  place-items: center;
+`;
+export const SignUpDiv = styled.div`
+  margin: 2rem auto;
+  position: relative;
+  z-index: 10;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 2rem;
+`;

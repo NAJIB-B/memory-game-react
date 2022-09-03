@@ -24,10 +24,6 @@ export const LoginDiv = styled.div`
   border-radius: 20px;
   padding: 2rem;
   z-index: 10;
-
-  @media (max-width: 600px) {
-    top: 50%;
-  }
 `;
 export const DontHaveAccout = styled.h4`
   color: white;

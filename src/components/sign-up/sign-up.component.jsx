@@ -27,6 +27,7 @@ import {
   signInWithGoogleRedirect,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
+import { SignUpPageDiv, SignUpDiv } from "./sign-up.style";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -86,8 +87,8 @@ const SignUp = () => {
     }
   };
   return (
-    <Area>
-      <LoginDiv>
+    <SignUpPageDiv>
+      <SignUpDiv>
         <FormFieldLabels>Name :</FormFieldLabels>
         <FormInputs
           type="text"
@@ -146,7 +147,7 @@ const SignUp = () => {
         <DontHaveAccout>
           Already have an account?<span onClick={login}>Log in</span>
         </DontHaveAccout>
-      </LoginDiv>
+      </SignUpDiv>
       <Circles>
         <CirclesLi></CirclesLi>
         <CirclesLi></CirclesLi>
@@ -159,7 +160,7 @@ const SignUp = () => {
         <CirclesLi></CirclesLi>
         <CirclesLi></CirclesLi>
       </Circles>
-    </Area>
+    </SignUpPageDiv>
   );
 };
 
