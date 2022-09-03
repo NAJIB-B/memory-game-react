@@ -25,6 +25,7 @@ import {
   createUserDocument,
   auth,
   signInWithGoogleRedirect,
+  signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
 
 const SignUp = () => {
@@ -75,7 +76,7 @@ const SignUp = () => {
     }
   };
   const signInWithGoogle = () => {
-    signInWithGoogleRedirect();
+    signInWithGooglePopup();
   };
   return (
     <Area>
