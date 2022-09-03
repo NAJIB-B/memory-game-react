@@ -15,6 +15,7 @@ export const ModalStars = styled(Stars)`
 `;
 
 export const ModalContainerDiv = styled.div`
+  font-family: "Exo", sans-serif;
   position: absolute;
   text-align: center;
   width: 20rem;

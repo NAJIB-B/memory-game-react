@@ -10,6 +10,7 @@ import { getData } from "../../utils/firebase/firebase.utils";
 import { setUserLevels } from "../../store/levels/levels.action";
 import { SignUpBtn } from "../home/home.style.jsx";
 import { Stars } from "../unlockedLevelCard/unlockedLevelCard.style";
+import { useState } from "react";
 import {
   Overlay,
   ModalContainerDiv,
@@ -17,6 +18,7 @@ import {
   ModalStars,
 } from "./modalContainer.style.jsx";
 const ModalContainer = (props) => {
+  const [spinner, setSpinner] = useState(false);
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const uid = useSelector(selectUid);
@@ -26,15 +28,18 @@ const ModalContainer = (props) => {
   const previous = props.previous;
   const fetchData = async () => {
     const data = await getData(uid);
-    console.log("new level data", data);
+   
     dispatch(setUserLevels(data.levels));
   };
 
   const handleNext = () => {
     unlockLevel(uid, next);
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+   
+    }, 1500);
     setModal(false);
-
+  
     navigate("/levels");
   };
 

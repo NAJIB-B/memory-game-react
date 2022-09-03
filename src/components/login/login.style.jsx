@@ -38,6 +38,9 @@ export const DontHaveAccout = styled.h4`
 
     cursor: pointer;
   }
+  @media (max-width: 420px) {
+    font-size: 1rem;
+  }
 `;
 export const FormFieldLabels = styled.p`
   font-size: 1.3rem;

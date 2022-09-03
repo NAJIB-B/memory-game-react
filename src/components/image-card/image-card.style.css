@@ -1,8 +1,16 @@
 .tileImage {
-    width: 200px;
-    height: 180px;
-  }
+  width: 200px;
+  height: 180px;
+}
 
+.imgDivWhite {
+  background-color: rgb(255, 255, 255);
+  display: inline-block;
+  height: auto;
+  width: 200px;
+  margin: 3px;
+}
+@media (max-width: 1377px) {
   .imgDivWhite {
     background-color: rgb(255, 255, 255);
     display: inline-block;
@@ -10,3 +18,113 @@
     width: 200px;
     margin: 3px;
   }
+  .tileImage {
+    width: 200px;
+    height: 180px;
+  }
+}
+@media (max-width: 1180px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 180px;
+    margin: 3px;
+  }
+  .tileImage {
+    width: 180px;
+    height: 180px;
+  }
+}
+@media (max-width: 1065px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 150px;
+    margin: 3px;
+  }
+  .tileImage {
+    width: 150px;
+    height: 140px;
+  }
+}
+@media (max-width: 780px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 125px;
+    margin: 2.5px;
+  }
+  .tileImage {
+    width: 125px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 657px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 110px;
+    margin: 2.5px;
+  }
+  .tileImage {
+    width: 110px;
+    height: 90px;
+  }
+}
+@media (max-width: 577px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 110px;
+    margin: 2px;
+  }
+  .tileImage {
+    width: 100px;
+    height: 85px;
+  }
+}
+@media (max-width: 520px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 80px;
+    margin: 2px;
+  }
+  .tileImage {
+    width: 80px;
+    height: 70px;
+  }
+}
+@media (max-width: 377px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 60px;
+    margin: 2px;
+  }
+  .tileImage {
+    width: 60px;
+    height: 50px;
+  }
+}
+@media (max-width: 285px) {
+  .imgDivWhite {
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    height: auto;
+    width: 40px;
+    margin: 1.5px;
+  }
+  .tileImage {
+    width: 40px;
+    height: 35px;
+  }
+}

@@ -13,7 +13,7 @@ const Levels = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData(uid);
-      console.log(data);
+
       dispatch(setUserLevels(data.levels));
     };
     fetchData();

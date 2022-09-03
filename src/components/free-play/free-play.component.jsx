@@ -181,8 +181,8 @@ const FreePlay = () => {
   };
 
   return (
-    <>
-      <button>
+    <div className="mainGameDiv">
+      <button className="startBtn">
         {startBtn ? (
           <p onClick={handleStartGame}>start</p>
         ) : (
@@ -193,19 +193,21 @@ const FreePlay = () => {
       {instuction ? <p>click colunm to match the images</p> : ""}
       {showWinMessage ? <p>you won with {count}</p> : ""}
 
-      <p>{showMoves ? count : ""}</p>
+      <p>{showMoves ? `Moves : ${count}` : ""}</p>
       <div className="imagesDiv">
-        {showImgs
-          ? imgs.map((img, index) => {
-              return <ImageCard key={index} image={img}></ImageCard>;
-            })
-          : imgs.map((img, index) => {
-              return (
-                <ClosedImageCard key={index} image={img}></ClosedImageCard>
-              );
-            })}
+        <div className="innerImagesDiv">
+          {showImgs
+            ? imgs.map((img, index) => {
+                return <ImageCard key={index} image={img}></ImageCard>;
+              })
+            : imgs.map((img, index) => {
+                return (
+                  <ClosedImageCard key={index} image={img}></ClosedImageCard>
+                );
+              })}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

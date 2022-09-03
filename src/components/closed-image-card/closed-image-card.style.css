@@ -1,6 +1,45 @@
 .imagesDiv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.imgDiv {
+  background-color: green;
+  display: inline-block;
+  height: auto;
+  width: 200px;
+  margin: 3px;
+}
+.imgDivTrans {
+  background-color: white;
+  display: inline-block;
+  height: auto;
+  width: 200px;
+  margin: 3px;
+  transform: rotateY(180deg);
+}
+.transition {
+  transition: background-color 1s, transform 1s;
+}
+.tileImage {
+  width: 200px;
+  height: 180px;
+}
+.hidden {
+  visibility: hidden;
+}
+.showing {
+  visibility: visible;
+}
+.match {
+  visibility: visible;
+}
+@media (max-width: 1377px) {
+  .imagesDiv {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 70%;
   }
   .imgDiv {
     background-color: green;
@@ -17,20 +56,262 @@
     margin: 3px;
     transform: rotateY(180deg);
   }
-  .transition {
-    transition: background-color 1s, transform 1s;
-  }
   .tileImage {
     width: 200px;
     height: 180px;
   }
-  .hidden {
-    visibility: hidden;
+}
+@media (max-width: 1180px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
-  .showing {
-    visibility: visible;
+  .innerImagesDiv {
+    width: 70%;
   }
-  .match {
-    visibility: visible;
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 180px;
+    margin: 3px;
   }
-  
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 180px;
+    margin: 3px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 180px;
+    height: 160px;
+  }
+}
+@media (max-width: 1065px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 70%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 150px;
+    margin: 3px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 150px;
+    margin: 3px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 150px;
+    height: 140px;
+  }
+}
+@media (max-width: 893px) {
+  .innerImagesDiv {
+    width: 75%;
+  }
+}
+@media (max-width: 833px) {
+  .innerImagesDiv {
+    width: 80%;
+  }
+}
+@media (max-width: 780px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 125px;
+    margin: 2.5px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 125px;
+    margin: 2.5px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 125px;
+    height: 110px;
+  }
+}
+@media (max-width: 657px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 110px;
+    margin: 2.5px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 110px;
+    margin: 2.5px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 110px;
+    height: 90px;
+  }
+}
+@media (max-width: 577px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 100px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 100px;
+    margin: 2px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 110px;
+    height: 85px;
+  }
+}
+@media (max-width: 520px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 80px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 80px;
+    margin: 2px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 80px;
+    height: 70px;
+  }
+}
+@media (max-width: 420px) {
+  .innerImagesDiv {
+    width: 90%;
+  }
+}
+@media (max-width: 377px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 60px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 60px;
+    margin: 2px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 60px;
+    height: 50px;
+  }
+}
+@media (max-width: 320px) {
+  .innerImagesDiv {
+    width: 90%;
+  }
+}
+@media (max-width: 285px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 75%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 40px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 40px;
+    margin: 1.5px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 40px;
+    height: 35px;
+  }
+}
+@media (max-width: 245px) {
+  .innerImagesDiv {
+    width: 80%;
+  }
+}
+@media (max-width: 220px) {
+  .innerImagesDiv {
+    width: 90%;
+  }
+}

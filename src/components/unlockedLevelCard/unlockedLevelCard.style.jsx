@@ -29,6 +29,7 @@ export const UnlockedLevelButton = styled.button`
   font-family: "Exo", sans-serif;
   position: relative;
   z-index: 10;
+
   @media (max-width: 350px) {
     width: 13rem;
     padding: 1.2rem;
@@ -48,6 +49,9 @@ export const UnlockedLevelButton = styled.button`
 
 export const LevelName = styled.span`
   margin-right: 2rem;
+  @media (max-width: 500px) {
+    font-size: 1.2rem;
+  }
   @media (max-width: 350px) {
     margin-right: 1.5rem;
   }

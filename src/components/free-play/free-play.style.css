@@ -1,12 +1,25 @@
+.mainGameDiv {
+  text-align: center;
+  font-family: "Exo", sans-serif;
+}
+.mainGameDiv p {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
 .imagesDiv {
   display: grid;
+  place-items: center;
+
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.innerImagesDiv {
+  width: 60%;
 }
 .imgDiv {
   background-color: green;
   display: inline-block;
   height: auto;
-  width: 200px;
   margin: 3px;
 }
 .imgDivTrans {
@@ -32,4 +45,259 @@
 }
 .match {
   visibility: visible;
+}
+.startBtn {
+  padding: 0 2rem;
+  margin: 1rem;
+  margin-bottom: 0;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  background: #33cc36;
+  border: none;
+
+  cursor: pointer;
+  text-shadow: 2px 2px black;
+  border-radius: 20px;
+  position: relative;
+  z-index: 10;
+}
+.startBtn p {
+  margin: 1px;
+  padding: 0.2rem 2rem;
+}
+@media (max-width: 1065px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 70%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 150px;
+    margin: 3px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 150px;
+    margin: 3px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 150px;
+    height: 140px;
+  }
+}
+@media (max-width: 893px) {
+  .innerImagesDiv {
+    width: 75%;
+  }
+}
+@media (max-width: 833px) {
+  .innerImagesDiv {
+    width: 80%;
+  }
+}
+@media (max-width: 780px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 125px;
+    margin: 2.5px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 125px;
+    margin: 2.5px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 125px;
+    height: 110px;
+  }
+  .mainGameDiv p {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 657px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 110px;
+    margin: 2.5px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 110px;
+    margin: 2.5px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 110px;
+    height: 90px;
+  }
+}
+@media (max-width: 577px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 100px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 100px;
+    margin: 2px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 110px;
+    height: 85px;
+  }
+}
+@media (max-width: 520px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 80px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 80px;
+    margin: 2px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 80px;
+    height: 70px;
+  }
+  .mainGameDiv p {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 420px) {
+  .innerImagesDiv {
+    width: 90%;
+  }
+}
+@media (max-width: 377px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 80%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 60px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 60px;
+    margin: 2px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 60px;
+    height: 50px;
+  }
+  .mainGameDiv p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 320px) {
+  .innerImagesDiv {
+    width: 90%;
+  }
+}
+@media (max-width: 285px) {
+  .imagesDiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  }
+  .innerImagesDiv {
+    width: 75%;
+  }
+  .imgDiv {
+    background-color: green;
+    display: inline-block;
+    height: auto;
+    width: 40px;
+    margin: 2px;
+  }
+  .imgDivTrans {
+    background-color: white;
+    display: inline-block;
+    height: auto;
+    width: 40px;
+    margin: 1.5px;
+    transform: rotateY(180deg);
+  }
+  .tileImage {
+    width: 40px;
+    height: 35px;
+  }
+}
+@media (max-width: 245px) {
+  .innerImagesDiv {
+    width: 80%;
+  }
+}
+@media (max-width: 220px) {
+  .innerImagesDiv {
+    width: 90%;
+  }
 }
