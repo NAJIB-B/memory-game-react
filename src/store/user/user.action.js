@@ -6,3 +6,6 @@ export const setCurrentUser = (user) => {
 export const setUid = (value) => {
   return createAction(USER_ACTION_TYPES.SET_UID, value);
 };
+export const setLoading = (value) => {
+  return createAction(USER_ACTION_TYPES.SET_LOADING, value);
+};

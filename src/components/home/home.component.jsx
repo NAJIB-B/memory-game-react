@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectCurrentUser } from "../../store/user/user.selector";
+import { useEffect } from "react";
+import {
+  selectCurrentUser,
+  selectLoading,
+} from "../../store/user/user.selector";
+import { setLoading } from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
+import Spinner from "../spinner/spinner.component";
 import {
   Area,
   Circles,
@@ -18,7 +25,13 @@ import {
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 const Home = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+  const isLoading = useSelector(selectLoading);
+  useEffect(() => {
+    if (!currentUser) return;
+    dispatch(setLoading(false));
+  }, []);
   const logOut = async () => {
     signOutUser();
   };
@@ -36,35 +49,39 @@ const Home = () => {
   };
   return (
     <div>
-      <Area>
-        <TopBtnDiv>
-          {currentUser ? (
-            <LogOutBtn onClick={logOut}>logout</LogOutBtn>
-          ) : (
-            <div>
-              <LogOutBtn onClick={login}>Log in</LogOutBtn>
+      {isLoading ? (
+        <Spinner></Spinner>
+      ) : (
+        <Area>
+          <TopBtnDiv>
+            {currentUser ? (
+              <LogOutBtn onClick={logOut}>logout</LogOutBtn>
+            ) : (
+              <div>
+                <LogOutBtn onClick={login}>Log in</LogOutBtn>
 
-              <SignUpBtn onClick={signUp}>Sign Up</SignUpBtn>
-            </div>
-          )}
-        </TopBtnDiv>
-        <HomeH1>memory game</HomeH1>
-        <GameBtnDiv onClick={freePlay}>Free Mode</GameBtnDiv>
-        <GameBtnDiv onClick={levels}>Levels</GameBtnDiv>
+                <SignUpBtn onClick={signUp}>Sign Up</SignUpBtn>
+              </div>
+            )}
+          </TopBtnDiv>
+          <HomeH1>memory game</HomeH1>
+          <GameBtnDiv onClick={freePlay}>Free Mode</GameBtnDiv>
+          <GameBtnDiv onClick={levels}>Levels</GameBtnDiv>
 
-        <Circles>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-        </Circles>
-      </Area>
+          <Circles>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+          </Circles>
+        </Area>
+      )}
     </div>
   );
 };

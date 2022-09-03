@@ -1,4 +1,5 @@
 export const USER_ACTION_TYPES = {
     SET_CURRENT_USER: "SET_CURRENT_USER",
     SET_UID: "SET_UID",
+    SET_LOADING: "SET_LOADING",
   };

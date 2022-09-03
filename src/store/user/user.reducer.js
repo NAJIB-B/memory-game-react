@@ -1,7 +1,8 @@
 import { USER_ACTION_TYPES } from "./user.types";
 const INITIAL_STATE = {
   currentUser: null,
-  uid:null,
+  uid: null,
+  loading: false,
 };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,8 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return { ...state, currentUser: payload };
     case USER_ACTION_TYPES.SET_UID:
       return { ...state, uid: payload };
+    case USER_ACTION_TYPES.SET_LOADING:
+      return { ...state, loading: payload };
 
     default:
       return state;

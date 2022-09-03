@@ -28,14 +28,17 @@ import {
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
 import { SignUpPageDiv, SignUpDiv } from "./sign-up.style";
-
+import { setLoading } from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
 const SignUp = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     const redirect = async () => {
       const response = await getRedirectResult(auth);
       if (response) {
         const userDocRef = await createUserDocument(response.user, levels);
+        dispatch(setLoading(true));
         navigate("/");
       }
     };
@@ -72,6 +75,7 @@ const SignUp = () => {
       await createUserDocument(user, levels, { displayName });
 
       resetFields();
+      dispatch(setLoading(true));
       navigate("/");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -83,6 +87,7 @@ const SignUp = () => {
     const response = await signInWithGooglePopup();
     if (response) {
       const userDocRef = await createUserDocument(response.user, levels);
+      dispatch(setLoading(true));
       navigate("/");
     }
   };

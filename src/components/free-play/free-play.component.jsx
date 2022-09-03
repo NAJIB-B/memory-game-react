@@ -9,7 +9,9 @@ import horse from "../../assets/images/horse.png";
 import panda from "../../assets/images/panda.png";
 import rat from "../../assets/images/rat.png";
 import croc from "../../assets/images/croc.png";
-
+import song from "../../assets/song/audio.wav";
+import fail from "../../assets/song/fail.mp3";
+import win from "../../assets/song/win.mp3";
 import { suffleImages } from "../../utils/game/game.utils";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -56,7 +58,11 @@ const FreePlay = () => {
     { img: croc, id: "OtXc2HJ6Md", showing: false },
     { img: rat, id: "zfuyoTxNNl", showing: false },
   ];
+  const myAudio = new Audio(song);
+  const failSound = new Audio(fail);
+  const winSound = new Audio(win);
   const [imgs, setImgs] = useState([]);
+
   const [showImgs, setShowImgs] = useState(false);
   const [startBtn, setStartBtn] = useState(true);
   const [instuction, setInstuction] = useState(false);
@@ -99,6 +105,7 @@ const FreePlay = () => {
       for (let j = 0; j < showingArray.length; j++) {
         if (showingArray.length + 1 <= 1) return;
         if (showingArray[0] !== showingArray[1]) {
+          failSound.play()
           const newState = imagesState.map((item) =>
             item.img === showingArray[0] ? { ...item, showing: false } : item
           );
@@ -106,6 +113,7 @@ const FreePlay = () => {
           setImgs(newState);
           dispatch(setImagesState(newState));
         } else {
+          myAudio.play();
           dispatch(addItemToMatchedImages(showingArray[0]));
           dispatch(addItemToMatchedImages(showingArray[1]));
           dispatch(removeItemFromShowingArray(showingArray[0]));
@@ -118,9 +126,11 @@ const FreePlay = () => {
   }, [showingArray]);
   useEffect(() => {
     if (matchedImages.length === unshuffledImg.length * 2) {
+      winSound.play()
       dispatch(changeGameState(false));
       setWinMessage(true);
       setShowMoves(false);
+
       console.log("you won");
     }
   }, [matchedImages]);
@@ -129,6 +139,7 @@ const FreePlay = () => {
     dispatch(changeGameState(true));
     defaultValues();
     setInstuction(true);
+
     setShowImgs(!showImgs);
     setTimeout(() => {
       setShowImgs(false);
@@ -169,6 +180,7 @@ const FreePlay = () => {
   useEffect(() => {
     setImgs(imagesState);
   }, []);
+
   useEffect(() => {
     const images = suffleImages(unshuffledImg);
     setImgs(images);

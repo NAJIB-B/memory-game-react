@@ -4,7 +4,8 @@ import { Icon } from "@iconify/react";
 import { getRedirectResult } from "firebase/auth";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { useState } from "react";
-
+import { setLoading } from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { levels } from "../../utils/game/levels-data";
 import {
@@ -33,11 +34,13 @@ import {
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     const redirect = async () => {
       const response = await getRedirectResult(auth);
       if (response) {
         const userDocRef = await createUserDocument(response.user, levels);
+        dispatch(setLoading(true));
         navigate("/");
       }
     };
@@ -69,6 +72,7 @@ const Login = () => {
       );
 
       resetFields();
+      dispatch(setLoading(true));
       navigate("/");
     } catch (error) {
       switch (error.code) {
@@ -90,6 +94,7 @@ const Login = () => {
     const response = await signInWithGooglePopup();
     if (response) {
       const userDocRef = await createUserDocument(response.user, levels);
+      dispatch(setLoading(true));
       navigate("/");
     }
   };
