@@ -3,3 +3,6 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 export const setUserLevels = (value) => {
   return createAction(LEVELS_ACTION_TYPES.SET_USER_LEVELS, value);
 };
+export const setSpinner = (value) => {
+  return createAction(LEVELS_ACTION_TYPES.SET_SPINNER, value);
+};

@@ -7,7 +7,7 @@ import { selectUid } from "../../store/user/user.selector";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getData } from "../../utils/firebase/firebase.utils";
-import { setUserLevels } from "../../store/levels/levels.action";
+import { setUserLevels, setSpinner } from "../../store/levels/levels.action";
 import { SignUpBtn } from "../home/home.style.jsx";
 import { Stars } from "../unlockedLevelCard/unlockedLevelCard.style";
 import { useState } from "react";
@@ -18,7 +18,6 @@ import {
   ModalStars,
 } from "./modalContainer.style.jsx";
 const ModalContainer = (props) => {
-  const [spinner, setSpinner] = useState(false);
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const uid = useSelector(selectUid);
@@ -28,7 +27,7 @@ const ModalContainer = (props) => {
   const previous = props.previous;
   const fetchData = async () => {
     const data = await getData(uid);
-   
+
     dispatch(setUserLevels(data.levels));
   };
 
@@ -36,10 +35,10 @@ const ModalContainer = (props) => {
     unlockLevel(uid, next);
     setTimeout(() => {
       fetchData();
-   
+      dispatch(setSpinner(false));
     }, 1500);
     setModal(false);
-  
+    dispatch(setSpinner(true));
     navigate("/levels");
   };
 

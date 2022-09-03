@@ -1,40 +1,50 @@
 import LevelCard from "../level-card/level-card.component";
 import { useSelector } from "react-redux";
-import { selectUserLevels } from "../../store/levels/levels.selector";
+import {
+  selectUserLevels,
+  selectSpinner,
+} from "../../store/levels/levels.selector";
 import { LevelPreviewDiv } from "./LevelsPreview.style";
 import { Circles, CirclesLi } from "../home/home.style";
-
+import Spinner from "../spinner/spinner.component";
 const LevelsPreview = () => {
   const levels = useSelector(selectUserLevels);
+  const spinner = useSelector(selectSpinner);
   if (!levels) return;
   const main = Object.entries(levels);
   //   const level = Object.entries(main[0][1]);
   return (
-    <LevelPreviewDiv>
-      {main.map((item, index) => {
-        const data = item[1];
+    <>
+      {spinner ? (
+        <Spinner></Spinner>
+      ) : (
+        <LevelPreviewDiv>
+          {main.map((item, index) => {
+            const data = item[1];
 
-        return (
-          <LevelCard
-            key={index}
-            levelName={item[0]}
-            levelData={data}
-          ></LevelCard>
-        );
-      })}
-      <Circles>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-        <CirclesLi></CirclesLi>
-      </Circles>
-    </LevelPreviewDiv>
+            return (
+              <LevelCard
+                key={index}
+                levelName={item[0]}
+                levelData={data}
+              ></LevelCard>
+            );
+          })}
+          <Circles>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+            <CirclesLi></CirclesLi>
+          </Circles>
+        </LevelPreviewDiv>
+      )}
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
 export const LEVELS_ACTION_TYPES = {
     SET_USER_LEVELS: "SET_USER_LEVELS",
-  
+    SET_SPINNER:"SET_SPINNER"
   };
