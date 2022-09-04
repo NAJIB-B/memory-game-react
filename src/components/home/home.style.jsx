@@ -17,9 +17,9 @@ const homeAnimation = keyframes`
 
 export const Area = styled.div`
   background: rgba(152, 68, 183, 1);
-  /* background: -webkit-linear-gradient(to left, #8f94fb, rgba(152, 68, 183, 1)); */
+  background: -webkit-linear-gradient(to left, #8f94fb, rgba(152, 68, 183, 1));
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
 `;
 export const HomeH1 = styled.h1`

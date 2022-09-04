@@ -4,9 +4,9 @@ export const SignUpPageDiv = styled.div`
   background-color: rgba(152, 68, 183, 1);
 
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
-  overflow-y: scroll;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   place-items: center;
