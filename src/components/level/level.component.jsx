@@ -30,20 +30,22 @@ import {
   selectImagesState,
   selectGameState,
 } from "../../store/game/game.selector";
+import { selectModal } from "../../store/modal/modal.selector";
+import { setModal } from "../../store/modal/modal.action";
 import song from "../../assets/song/audio.wav";
 import fail from "../../assets/song/fail.mp3";
 import win from "../../assets/song/win.mp3";
 import { selectUserLevels } from "../../store/levels/levels.selector";
 import Modal from "../modal/modal.component";
-import { useContext } from "react";
-import { ModalContext } from "../context/modal.context";
+
+import BackBtn from "../backBtn/backBtn.component";
 const Level = () => {
   const { level } = useParams();
   const myAudio = new Audio(song);
   const failSound = new Audio(fail);
   const winSound = new Audio(win);
   const userLevels = useSelector(selectUserLevels);
-  const { setModal, modal } = useContext(ModalContext);
+
   const unshuffledImg = userLevels[level].Images;
   const [imgs, setImgs] = useState([]);
 
@@ -52,13 +54,14 @@ const Level = () => {
   const [instuction, setInstuction] = useState(false);
   const [showMoves, setShowMoves] = useState(false);
   const [showWinMessage, setWinMessage] = useState(false);
-  // const [modal, setModal] = useState(false);
+
   const dispatch = useDispatch();
 
   const levelMoves = userLevels[level].levelMoves;
   const moves = useSelector(selectCounterValue);
 
   const userUid = useSelector(selectUid);
+  const modal = useSelector(selectModal);
   const showingArray = useSelector(selectShowingArray);
   const matchedImages = useSelector(selectMatchedImages);
   const imagesState = useSelector(selectImagesState);
@@ -93,7 +96,7 @@ const Level = () => {
       for (let j = 0; j < showingArray.length; j++) {
         if (showingArray.length <= 1) return;
         if (showingArray[0] !== showingArray[1]) {
-          failSound.play()
+          failSound.play();
           const newState = imagesState.map((item) =>
             item.img === showingArray[0] ? { ...item, showing: false } : item
           );
@@ -114,7 +117,7 @@ const Level = () => {
   }, [showingArray]);
   useEffect(() => {
     if (matchedImages.length === unshuffledImg.length * 2) {
-      winSound.play()
+      winSound.play();
       dispatch(changeGameState(false));
 
       setWinMessage(true);
@@ -127,7 +130,8 @@ const Level = () => {
       updateLevelData(userUid, level, playerStar, moves);
       dispatch(resetmatchedImages([]));
       dispatch(resetShowingArray([]));
-      setModal(true);
+      dispatch(setModal(true));
+      // setModal(true);
     }
   }, [matchedImages]);
   const getStar = (levelMoves, moves) => {
@@ -203,34 +207,43 @@ const Level = () => {
   };
 
   return (
-    <div className="mainGameDiv">
-      <button className="startBtn">
-        {startBtn ? (
-          <p onClick={handleStartGame}>start</p>
-        ) : (
-          <p onClick={handleResetGame}>reset</p>
-        )}
-      </button>
+    <>
+      {modal ? (
+        <Modal></Modal>
+      ) : (
+        <div className="mainGameDiv">
+          <BackBtn></BackBtn>
+          <button className="startBtn">
+            {startBtn ? (
+              <p onClick={handleStartGame}>start</p>
+            ) : (
+              <p onClick={handleResetGame}>reset</p>
+            )}
+          </button>
 
-      {instuction ? <p>click colunm to match the images</p> : ""}
-      {showWinMessage ? <p>you won with {count}</p> : ""}
+          {instuction ? <p>click colunm to match the images</p> : ""}
+          {showWinMessage ? <p>you won with {count}</p> : ""}
 
-      <p>{showMoves ? `Moves : ${count}` : ""}</p>
-      <div className="imagesDiv">
-        <div className="innerImagesDiv">
-          {showImgs
-            ? imgs.map((img, index) => {
-                return <ImageCard key={index} image={img}></ImageCard>;
-              })
-            : imgs.map((img, index) => {
-                return (
-                  <ClosedImageCard key={index} image={img}></ClosedImageCard>
-                );
-              })}
+          <p>{showMoves ? `Moves : ${count}` : ""}</p>
+          <div className="imagesDiv">
+            <div className="innerImagesDiv">
+              {showImgs
+                ? imgs.map((img, index) => {
+                    return <ImageCard key={index} image={img}></ImageCard>;
+                  })
+                : imgs.map((img, index) => {
+                    return (
+                      <ClosedImageCard
+                        key={index}
+                        image={img}
+                      ></ClosedImageCard>
+                    );
+                  })}
+            </div>
+          </div>
         </div>
-      </div>
-      {modal ? <Modal></Modal> : ""}
-    </div>
+      )}
+    </>
   );
 };
 

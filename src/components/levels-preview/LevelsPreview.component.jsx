@@ -1,5 +1,6 @@
 import LevelCard from "../level-card/level-card.component";
 import { useSelector } from "react-redux";
+import BackBtn from "../backBtn/backBtn.component";
 import {
   selectUserLevels,
   selectSpinner,
@@ -19,6 +20,7 @@ const LevelsPreview = () => {
         <Spinner></Spinner>
       ) : (
         <LevelPreviewDiv>
+          <BackBtn></BackBtn>
           {main.map((item, index) => {
             const data = item[1];
 

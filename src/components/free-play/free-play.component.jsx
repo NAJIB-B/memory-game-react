@@ -29,6 +29,7 @@ import {
   setIdOfSelected,
   resetmatchedImages,
 } from "../../store/game/game.action";
+import BackBtn from "../backBtn/backBtn.component";
 import {
   selectMatchedImages,
   selectCounterValue,
@@ -105,7 +106,7 @@ const FreePlay = () => {
       for (let j = 0; j < showingArray.length; j++) {
         if (showingArray.length + 1 <= 1) return;
         if (showingArray[0] !== showingArray[1]) {
-          failSound.play()
+          failSound.play();
           const newState = imagesState.map((item) =>
             item.img === showingArray[0] ? { ...item, showing: false } : item
           );
@@ -126,7 +127,7 @@ const FreePlay = () => {
   }, [showingArray]);
   useEffect(() => {
     if (matchedImages.length === unshuffledImg.length * 2) {
-      winSound.play()
+      winSound.play();
       dispatch(changeGameState(false));
       setWinMessage(true);
       setShowMoves(false);
@@ -194,6 +195,7 @@ const FreePlay = () => {
 
   return (
     <div className="mainGameDiv">
+      <BackBtn></BackBtn>
       <button className="startBtn">
         {startBtn ? (
           <p onClick={handleStartGame}>start</p>

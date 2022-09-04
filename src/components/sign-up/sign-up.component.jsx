@@ -20,6 +20,7 @@ import {
   DontHaveAccout,
   Or,
 } from "../login/login.style";
+import BackBtn from "../backBtn/backBtn.component";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocument,
@@ -93,6 +94,7 @@ const SignUp = () => {
   };
   return (
     <SignUpPageDiv>
+      <BackBtn></BackBtn>
       <SignUpDiv>
         <FormFieldLabels>Name :</FormFieldLabels>
         <FormInputs

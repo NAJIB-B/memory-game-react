@@ -8,6 +8,7 @@ import { setLoading } from "../../store/user/user.action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { levels } from "../../utils/game/levels-data";
+import BackBtn from "../backBtn/backBtn.component";
 import {
   Circles,
   CirclesLi,
@@ -100,6 +101,7 @@ const Login = () => {
   };
   return (
     <Area>
+    <BackBtn></BackBtn>
       {" "}
       <LoginDiv>
         <FormFieldLabels>Email :</FormFieldLabels>

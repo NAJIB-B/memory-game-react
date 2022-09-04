@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./components/home/home.component";
-import Shop from "./components/shop";
 import SignUp from "./components/sign-up/sign-up.component";
 import FreePlay from "./components/free-play/free-play.component";
 import Login from "./components/login/login.component";
