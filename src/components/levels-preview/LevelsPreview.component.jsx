@@ -20,7 +20,7 @@ const LevelsPreview = () => {
         <Spinner></Spinner>
       ) : (
         <LevelPreviewDiv>
-          <BackBtn></BackBtn>
+        
           {main.map((item, index) => {
             const data = item[1];
 

@@ -101,8 +101,7 @@ const Login = () => {
   };
   return (
     <Area>
-    <BackBtn></BackBtn>
-      {" "}
+    
       <LoginDiv>
         <FormFieldLabels>Email :</FormFieldLabels>
         <FormInputs

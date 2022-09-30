@@ -94,7 +94,7 @@ const SignUp = () => {
   };
   return (
     <SignUpPageDiv>
-      <BackBtn></BackBtn>
+      
       <SignUpDiv>
         <FormFieldLabels>Name :</FormFieldLabels>
         <FormInputs

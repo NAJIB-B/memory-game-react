@@ -74,6 +74,7 @@ export const createUserDocument = async (
     }
   }
   //if snapshot exist
+
   return userDocRef;
 };
 export const onAuthStateChangedListener = (callback) =>

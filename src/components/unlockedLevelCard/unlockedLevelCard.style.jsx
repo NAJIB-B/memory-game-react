@@ -23,7 +23,7 @@ export const UnlockedLevelButton = styled.button`
   margin: 2rem;
   padding: 1.5rem;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   font-family: "Exo", sans-serif;

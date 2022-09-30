@@ -195,7 +195,7 @@ const FreePlay = () => {
 
   return (
     <div className="mainGameDiv">
-      <BackBtn></BackBtn>
+      
       <button className="startBtn">
         {startBtn ? (
           <p onClick={handleStartGame}>start</p>
